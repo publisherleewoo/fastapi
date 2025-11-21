@@ -21,4 +21,4 @@ class Answer(Base):
     content = Column(Text, nullable=False)
     create_date = Column(DateTime, nullable=False)
     question_id = Column(Integer, ForeignKey("question.id")) # 외래키  question테이블의 id컬럼
-    question = relationship("Question", backref="answers")
+    question = relationship("Question", backref="answers") #역참조
