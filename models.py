@@ -12,6 +12,7 @@ class Question(Base):  # database.py에서 정의한 Base 상속
     )  # String 제한된 글자수  nullable = not null
     content = Column(Text, nullable=False)  # Text 무제한 텍스트
     create_date = Column(DateTime, nullable=False)  # DateTime 날짜
+    answers = relationship("Answer", back_populates="question")
 
 
 class Answer(Base):
@@ -21,4 +22,4 @@ class Answer(Base):
     content = Column(Text, nullable=False)
     create_date = Column(DateTime, nullable=False)
     question_id = Column(Integer, ForeignKey("question.id")) # 외래키  question테이블의 id컬럼
-    question = relationship("Question", backref="answers") #역참조
+    question = relationship("Question", back_populates="answers") #역참조
